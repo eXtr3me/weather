@@ -23,22 +23,22 @@ app.use(express.static(publicDirectoryPath));
 
 app.get('', (req, res) => {
   res.render('index', {
-    title: 'Weather',
+    title: 'Meteorologia',
     name: 'Daniel Figueira'
   });
 });
 
 app.get('/about', (req, res) => {
   res.render('about', {
-    title: 'About Me',
+    title: 'Sobre mim',
     name: 'Daniel Figueira'
   });
 });
 
 app.get('/help', (req, res) => {
   res.render('help', {
-    helpText: 'This is some helpful text.',
-    title: 'Help',
+    helpText: 'Texto de ajuda.',
+    title: 'Ajuda',
     name: 'Daniel Figueira'
   });
 });
@@ -46,7 +46,7 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
   if (!req.query.address) {
     return res.send({
-      error: 'You must provide an address.'
+      error: 'Tem de fornecer um endereço.'
     });
   }
   geocode(
@@ -89,16 +89,16 @@ app.get('/weather', (req, res) => {
 app.get('/help/*', (req, res) => {
   res.render('404', {
     title: '404',
-    name: 'Andrew Mead',
-    errorMessage: 'Help article not found.'
+    name: 'Daniel Figueira',
+    errorMessage: 'Artigo de ajuda não encontrado.'
   });
 });
 
 app.get('*', (req, res) => {
   res.render('404', {
     title: '404',
-    name: 'Andrew Mead',
-    errorMessage: 'Page not found.'
+    name: 'Daniel Figueira',
+    errorMessage: 'Página não encontrada.'
   });
 });
 

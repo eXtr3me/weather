@@ -10,18 +10,21 @@ const forecast = (latitude, longitude, callback) => {
 
   request({ url, json: true }, (error, { body }) => {
     if (error) {
-      callback('Unable to connect to weather service!', undefined);
+      callback(
+        'Não foi possível conectar ao serviço meteorológico!',
+        undefined
+      );
     } else if (body.error) {
-      callback('Unable to find location', undefined);
+      callback('Localização não encontrada', undefined);
     } else {
       callback(
         undefined,
         body.daily.data[0].summary +
           ' It is currently ' +
           body.currently.temperature +
-          ' degress out. There is a ' +
+          ' graus. Existe ' +
           body.currently.precipProbability +
-          '% chance of rain.'
+          '% de probabilidade de chover.'
       );
     }
   });
